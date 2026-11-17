@@ -7,7 +7,8 @@ module top #(
 );
     assign a0 = 32'd5;
 
-    logic [31:0] instr; // TEMPORARY UNTIL MEMORY IN PLACE
+    // Instruction (produced by IMEM)
+    logic [31:0] instr;
 
     // Immediate sign extension (B-type, I-type)
     logic [DATA_WIDTH-1:0] imm_op;
@@ -24,6 +25,12 @@ module top #(
         .pc_src(pc_src),
         .imm_op(imm_op),
         .pc(pc)
+    );
+
+    // Instruction memory
+    rom imem (
+        .addr_i(pc),
+        .data_o(instr)
     );
 
     // Register file
