@@ -1,5 +1,5 @@
 module program_counter #(
-    paramter DATA_WIDTH = 32
+    parameter DATA_WIDTH = 32
 )(
     input logic clk,
     input logic rst,
@@ -19,9 +19,9 @@ assign next_pc = pc_src ? branch_pc : inc_pc;
 
 always_ff @(posedge clk) begin 
     if (rst)
-        pc <= 32'b0
+        pc <= 32'b0;
     else 
-        pc <= next_pc
+        pc <= next_pc;
 end 
 
 endmodule
